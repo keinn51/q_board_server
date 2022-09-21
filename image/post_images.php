@@ -18,7 +18,7 @@ $s3Client = new Aws\S3\S3Client(array(
     ],
 ));
 
-$s3_path = 'lks_img/';
+$s3_path = 'lks_img/' . $_POST['boardId'];
 $file_path = $_FILES['file']['tmp_name'];
 $result = $s3Client->putObject(array(
     'Bucket' => getenv('S3_BUCKET'),
@@ -27,4 +27,4 @@ $result = $s3Client->putObject(array(
     'ContentType' => $_FILES['file']['type']
 ));
 
-echo json_encode(array("test"=>"done"));
+echo json_encode($_FILES);
